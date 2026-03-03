@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecruitIQ — AI Recruitment Intelligence System</title>
+  <meta name="description"
+    content="AI-powered recruitment platform that analyzes up to 100 resumes, extracts candidate intelligence, matches job descriptions and ranks candidates with precision." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+
+  <!-- ===================== SCREEN 1: UPLOAD ===================== -->
+  <div id="screen-upload" class="screen active">
+    <!-- Animated Background -->
+    <div class="bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="upload-header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">RecruitIQ</span>
+          <span class="logo-sub">AI Intelligence Platform</span>
+        </div>
+      </div>
+      <div class="header-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path
+            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+        </svg>
+        Upload up to 100 resumes
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-pill">
+        <span class="pill-dot"></span>
+        AI-Powered Candidate Intelligence
+      </div>
+      <h1 class="hero-title">Find Your <span class="gradient-text">Perfect</span><br />Candidate</h1>
+      <p class="hero-sub">Upload resumes & job descriptions — our AI extracts, scores, and ranks candidates with
+        precision</p>
+    </section>
+
+    <!-- Upload Form -->
+    <div class="upload-container">
+
+      <!-- Step 1: Job Description -->
+      <div class="card" id="jd-card">
+        <div class="card-header">
+          <div class="card-icon icon-purple">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">Job Description</h3>
+            <p class="card-sub">Define the role for AI analysis</p>
+          </div>
+          <div class="step-badge">Step 1</div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="form-label">Job Title</label>
+            <input type="text" id="job-title" class="form-input" placeholder="e.g. Senior Software Engineer" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Full Job Description</label>
+            <textarea id="job-description" class="form-textarea" rows="6"
+              placeholder="Paste the complete job description with responsibilities, requirements, and qualifications...&#10;&#10;The AI will extract required skills, experience levels, certifications and more from this text."></textarea>
+          </div>
+          <div class="jd-tips">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            Include skills, years of experience, certifications, and education requirements for best results
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Resume Upload -->
+      <div class="card" id="resume-card">
+        <div class="card-header">
+          <div class="card-icon icon-cyan">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">Upload Resumes</h3>
+            <p class="card-sub">PDF, DOC, DOCX — up to 100 files</p>
+          </div>
+          <div class="file-counter-badge" id="file-counter-badge">0 / 100</div>
+          <div class="step-badge">Step 2</div>
+        </div>
+
+        <!-- Drop Zone -->
+        <div class="drop-zone" id="drop-zone">
+          <input type="file" id="file-input" multiple accept=".pdf,.doc,.docx" hidden />
+          <div class="drop-zone-content" id="drop-zone-content">
+            <div class="drop-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+            </div>
+            <p class="drop-title">Drop resumes here</p>
+            <p class="drop-sub">or <span class="drop-link" onclick="document.getElementById('file-input').click()">click
+                to browse</span></p>
+            <p class="drop-formats">PDF · DOC · DOCX · up to 100 files</p>
+          </div>
+          <div class="drop-overlay">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+            <p>Release to upload</p>
+          </div>
+        </div>
+
+        <!-- File List -->
+        <div class="file-list" id="file-list"></div>
+
+        <!-- Progress indicator when files added -->
+        <div class="upload-stats" id="upload-stats" style="display:none">
+          <div class="stat-row">
+            <span id="pdf-count-label">0 PDF files</span>
+            <span id="doc-count-label">0 DOC/DOCX files</span>
+            <span id="total-size-label">0 KB total</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analyze Button -->
+      <button class="btn-analyze" id="btn-analyze" disabled onclick="startAnalysis()">
+        <span class="btn-analyze-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+          </svg>
+        </span>
+        <span>Analyze Resumes with AI</span>
+        <span class="btn-file-count" id="btn-file-count"></span>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ===================== SCREEN 2: PROCESSING ===================== -->
+  <div id="screen-processing" class="screen">
+    <div class="bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+    <div class="processing-container">
+      <div class="processing-card">
+        <div class="ai-pulse-ring">
+          <div class="ai-pulse-ring-inner">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
+          </div>
+        </div>
+        <h2 class="processing-title">AI is Working</h2>
+        <p class="processing-sub" id="proc-sub">Initializing analysis engine...</p>
+
+        <div class="progress-wrap">
+          <div class="progress-labels">
+            <span>Progress</span>
+            <span id="progress-pct">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="proc-steps">
+          <div class="proc-step" id="step-jd" data-state="pending">
+            <div class="step-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <div class="step-info">
+              <div class="step-name">Analyzing Job Requirements</div>
+              <div class="step-desc">Extracting skills &amp; criteria</div>
+            </div>
+            <div class="step-status-dot"></div>
+          </div>
+
+          <div class="proc-step" id="step-parse" data-state="pending">
+            <div class="step-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+            </div>
+            <div class="step-info">
+              <div class="step-name">Parsing Resumes</div>
+              <div class="step-desc" id="parse-desc">Reading candidate data</div>
+            </div>
+            <div class="step-status-dot"></div>
+          </div>
+
+          <div class="proc-step" id="step-score" data-state="pending">
+            <div class="step-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+            </div>
+            <div class="step-info">
+              <div class="step-name">Calculating Match Scores</div>
+              <div class="step-desc">AI scoring &amp; ranking</div>
+            </div>
+            <div class="step-status-dot"></div>
+          </div>
+
+          <div class="proc-step" id="step-done" data-state="pending">
+            <div class="step-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <div class="step-info">
+              <div class="step-name">Complete!</div>
+              <div class="step-desc">All candidates scored</div>
+            </div>
+            <div class="step-status-dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===================== SCREEN 3: RESULTS ===================== -->
+  <div id="screen-results" class="screen">
+    <!-- Top Nav -->
+    <nav class="results-nav">
+      <button class="btn-back" onclick="resetToUpload()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+        New Screening
+      </button>
+      <div class="nav-logo">
+        <div class="logo-icon small">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <div><span class="logo-name">RecruitIQ</span><br /><span class="logo-sub">AI Intelligence Platform</span></div>
+      </div>
+      <div class="nav-stats">
+        <div class="nav-stat">
+          <div class="nav-stat-val" id="stat-total">0</div>
+          <div class="nav-stat-label">Total Candidates</div>
+        </div>
+        <div class="nav-stat-div"></div>
+        <div class="nav-stat">
+          <div class="nav-stat-val accent-cyan" id="stat-avg">0%</div>
+          <div class="nav-stat-label">Avg Score</div>
+        </div>
+        <div class="nav-stat-div"></div>
+        <div class="nav-stat">
+          <div class="nav-stat-val accent-green" id="stat-top">0</div>
+          <div class="nav-stat-label">Top Matches</div>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button class="btn-export" id="btn-export" onclick="exportSelected()" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Export Selected (<span id="selected-count">0</span>)
+        </button>
+      </div>
+    </nav>
+
+    <div class="results-body">
+      <!-- Sidebar Filters -->
+      <aside class="filter-sidebar">
+        <div class="filter-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+          </svg>
+          Filters
+          <button class="btn-clear-filters" onclick="clearAllFilters()">Clear All</button>
+        </div>
+
+        <!-- Min Match Score -->
+        <div class="filter-group">
+          <label class="filter-label">MIN MATCH SCORE</label>
+          <div class="slider-val-row">
+            <span id="score-val-display">0%</span>
+            <span>100%</span>
+          </div>
+          <input type="range" id="filter-score" class="range-slider" min="0" max="100" value="0"
+            oninput="applyFilters()" />
+        </div>
+
+        <!-- Experience Slider -->
+        <div class="filter-group">
+          <label class="filter-label">EXPERIENCE (YEARS)</label>
+          <div class="slider-val-row">
+            <span id="exp-min-display">0 yrs</span>
+            <span id="exp-max-display">30 yrs</span>
+          </div>
+          <div class="dual-slider-wrap">
+            <div class="dual-range-track">
+              <div class="dual-range-fill" id="exp-range-fill"></div>
+            </div>
+            <input type="range" id="filter-exp-min" class="dual-slider" min="0" max="30" value="0"
+              oninput="syncExpSliders('min')" />
+            <input type="range" id="filter-exp-max" class="dual-slider" min="0" max="30" value="30"
+              oninput="syncExpSliders('max')" />
+          </div>
+        </div>
+
+        <!-- Required Skills (searchable multi-select) -->
+        <div class="filter-group">
+          <label class="filter-label">REQUIRED SKILLS</label>
+          <div class="multi-select" id="skill-select">
+            <div class="ms-trigger" onclick="toggleDropdown('skill-dd')">
+              <span id="skill-select-label">Add skill...</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="ms-dropdown" id="skill-dd">
+              <input class="ms-search" type="text" placeholder="Search skills..."
+                oninput="filterDropdown('skill-dd', this.value)" onclick="event.stopPropagation()" />
+              <div class="ms-options-list" id="skill-dd-list"></div>
+            </div>
+          </div>
+          <div class="selected-tags" id="skill-tags"></div>
+        </div>
+
+        <!-- Certifications (searchable, pre-populated) -->
+        <div class="filter-group">
+          <label class="filter-label">CERTIFICATIONS</label>
+          <div class="multi-select" id="cert-select">
+            <div class="ms-trigger" onclick="toggleDropdown('cert-dd')">
+              <span id="cert-select-label">Add certification...</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="ms-dropdown" id="cert-dd">
+              <input class="ms-search" type="text" placeholder="Search certifications..."
+                oninput="filterDropdown('cert-dd', this.value)" onclick="event.stopPropagation()" />
+              <div class="ms-options-list" id="cert-dd-list"></div>
+            </div>
+          </div>
+          <div class="selected-tags" id="cert-tags"></div>
+        </div>
+
+        <!-- Languages (preset + custom) -->
+        <div class="filter-group">
+          <label class="filter-label">LANGUAGES</label>
+          <div class="multi-select" id="lang-select">
+            <div class="ms-trigger" onclick="toggleDropdown('lang-dd')">
+              <span id="lang-select-label">Add language...</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="ms-dropdown" id="lang-dd">
+              <input class="ms-search" type="text" placeholder="Search or type custom..."
+                oninput="filterDropdown('lang-dd', this.value)" onclick="event.stopPropagation()" />
+              <div class="ms-options-list" id="lang-dd-list"></div>
+              <div class="ms-custom-row">
+                <input class="ms-custom-input" id="lang-custom" type="text" placeholder="Custom language..."
+                  onclick="event.stopPropagation()" />
+                <button class="ms-custom-btn" onclick="addCustomOption('lang', 'lang-custom')">Add</button>
+              </div>
+            </div>
+          </div>
+          <div class="selected-tags" id="lang-tags"></div>
+        </div>
+
+        <!-- Previous Companies (pre-populated + custom) -->
+        <div class="filter-group">
+          <label class="filter-label">PREVIOUS COMPANIES</label>
+          <div class="multi-select" id="company-select">
+            <div class="ms-trigger" onclick="toggleDropdown('company-dd')">
+              <span id="company-select-label">Add company...</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="ms-dropdown" id="company-dd">
+              <input class="ms-search" type="text" placeholder="Search companies..."
+                oninput="filterDropdown('company-dd', this.value)" onclick="event.stopPropagation()" />
+              <div class="ms-options-list" id="company-dd-list"></div>
+              <div class="ms-custom-row">
+                <input class="ms-custom-input" id="company-custom" type="text" placeholder="Custom company..."
+                  onclick="event.stopPropagation()" />
+                <button class="ms-custom-btn" onclick="addCustomOption('company', 'company-custom')">Add</button>
+              </div>
+            </div>
+          </div>
+          <div class="selected-tags" id="company-tags"></div>
+        </div>
+
+        <!-- Availability (unchanged) -->
+        <div class="filter-group">
+          <label class="filter-label">AVAILABILITY</label>
+          <select id="filter-availability" class="form-select" onchange="applyFilters()">
+            <option value="">Any Availability</option>
+            <option value="immediate">Immediate</option>
+            <option value="2weeks">2 Weeks</option>
+            <option value="1month">1 Month</option>
+            <option value="negotiable">Negotiable</option>
+          </select>
+        </div>
+
+        <!-- LinkedIn (unchanged) -->
+        <div class="filter-group">
+          <label class="filter-label">LINKEDIN PROFILE</label>
+          <select id="filter-linkedin" class="form-select" onchange="applyFilters()">
+            <option value="">Any</option>
+            <option value="has">Has LinkedIn</option>
+            <option value="no">No LinkedIn</option>
+          </select>
+        </div>
+
+        <!-- Qualification (searchable + custom) -->
+        <div class="filter-group">
+          <label class="filter-label">QUALIFICATION</label>
+          <div class="multi-select" id="qual-select">
+            <div class="ms-trigger" onclick="toggleDropdown('qual-dd')">
+              <span id="qual-select-label">Add qualification...</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="ms-dropdown" id="qual-dd">
+              <input class="ms-search" type="text" placeholder="Search qualifications..."
+                oninput="filterDropdown('qual-dd', this.value)" onclick="event.stopPropagation()" />
+              <div class="ms-options-list" id="qual-dd-list"></div>
+              <div class="ms-custom-row">
+                <input class="ms-custom-input" id="qual-custom" type="text" placeholder="Custom qualification..."
+                  onclick="event.stopPropagation()" />
+                <button class="ms-custom-btn" onclick="addCustomOption('qual', 'qual-custom')">Add</button>
+              </div>
+            </div>
+          </div>
+          <div class="selected-tags" id="qual-tags"></div>
+        </div>
+
+        <!-- Degree Field (searchable + custom) -->
+        <div class="filter-group">
+          <label class="filter-label">DEGREE FIELD</label>
+          <div class="multi-select" id="degree-select">
+            <div class="ms-trigger" onclick="toggleDropdown('degree-dd')">
+              <span id="degree-select-label">Add field...</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+            <div class="ms-dropdown" id="degree-dd">
+              <input class="ms-search" type="text" placeholder="Search degree fields..."
+                oninput="filterDropdown('degree-dd', this.value)" onclick="event.stopPropagation()" />
+              <div class="ms-options-list" id="degree-dd-list"></div>
+              <div class="ms-custom-row">
+                <input class="ms-custom-input" id="degree-custom" type="text" placeholder="Custom field..."
+                  onclick="event.stopPropagation()" />
+                <button class="ms-custom-btn" onclick="addCustomOption('degree', 'degree-custom')">Add</button>
+              </div>
+            </div>
+          </div>
+          <div class="selected-tags" id="degree-tags"></div>
+        </div>
+
+        <!-- Keyword Detection -->
+        <div class="filter-group">
+          <label class="filter-label">KEYWORD DETECTION</label>
+          <div class="keyword-input-wrap">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input type="text" id="filter-keywords" class="keyword-input"
+              placeholder="e.g. microservices, REST, agile..." oninput="applyFilters()" />
+          </div>
+          <div class="keyword-hint">Matches across name, skills, education, certifications &amp; companies</div>
+        </div>
+      </aside>
+
+      <!-- Main Results -->
+      <main class="results-main">
+        <!-- JD Analysis Card -->
+        <div class="jd-analysis-card" id="jd-analysis-card">
+          <div class="jda-header">
+            <div class="card-icon icon-cyan small">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <div>
+              <div class="jda-tag">AI ANALYSIS — <span id="jda-title"></span></div>
+              <div class="jda-sub">Requirements extracted from job description</div>
+            </div>
+            <div class="jda-active">● Active</div>
+          </div>
+          <div class="jda-content">
+            <div class="jda-section">
+              <div class="jda-section-title">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                REQUIRED SKILLS
+              </div>
+              <div class="skill-pills" id="jda-required-skills"></div>
+            </div>
+            <div class="jda-section">
+              <div class="jda-section-title">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                PREFERRED SKILLS
+              </div>
+              <div class="skill-pills preferred" id="jda-preferred-skills"></div>
+            </div>
+            <div class="jda-exp">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span id="jda-exp-text">Experience requirement extracted</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Header -->
+        <div class="results-header-row">
+          <div>
+            <h2 class="results-title">Ranked Candidates</h2>
+            <p class="results-count" id="results-count">0 of 0 shown</p>
+          </div>
+          <div class="results-controls">
+            <div class="select-all-row">
+              <input type="checkbox" id="select-all-cb" onchange="toggleSelectAll()" />
+              <label for="select-all-cb">Select All</label>
+            </div>
+            <select class="sort-select" onchange="changeSort(this.value)">
+              <option value="score-desc">Highest First</option>
+              <option value="score-asc">Lowest First</option>
+              <option value="name-asc">A → Z</option>
+              <option value="exp-desc">Most Experienced</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="no-results" style="display:none">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <h3>No candidates match your filters</h3>
+          <p>Try adjusting your filter criteria or minimum score threshold</p>
+          <button onclick="clearAllFilters()">Clear All Filters</button>
+        </div>
+
+        <!-- Candidate Cards -->
+        <div class="candidate-list" id="candidate-list"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- PDF.js for PDF text extraction -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <!-- Mammoth.js for DOCX text extraction -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>
